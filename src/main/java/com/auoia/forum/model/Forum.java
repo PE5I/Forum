@@ -14,7 +14,7 @@ public class Forum {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "forum")
     List<Topic> topicList;
 
     public Forum() {}

@@ -11,8 +11,11 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "topic") // post belongs to one topic
     List<Post> postList;
+
+    @ManyToOne // many topics belong to one forum
+    Forum forum;
 
     public String title;
     public String body;
