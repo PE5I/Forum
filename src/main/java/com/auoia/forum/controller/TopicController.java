@@ -1,6 +1,5 @@
 package com.auoia.forum.controller;
 
-import com.auoia.forum.model.Post;
 import com.auoia.forum.model.Topic;
 import com.auoia.forum.service.PostService;
 import com.auoia.forum.service.TopicService;
@@ -40,8 +39,8 @@ public class TopicController {
         topicService.saveTopic(newTopic);
     }
 
-    @PostMapping(path="/{topicId}")
-    public void createPost(@PathVariable Long topicId, @RequestBody Post newPost) {
-        postService.savePost(topicId, newPost);
-    }
+//    @PostMapping(path="/{topicId}")
+//    public void createPost(@PathVariable Long topicId, @RequestBody Post newPost) {
+//        postService.savePost(topicId, newPost);
+//    }
 }

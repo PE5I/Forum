@@ -20,7 +20,8 @@ public class PostService {
         Topic parentTopic = topicService.getTopicById(topicId);
 
         newPost.setTopic(parentTopic);
-        parentTopic.getPostList().add(newPost);
+        //parentTopic.getPostList().add(newPost);
+        //newPost.setTopic(parentTopic);
 
         postRepository.save(newPost);
     }

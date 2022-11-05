@@ -1,6 +1,13 @@
 package com.auoia.forum.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,10 +15,11 @@ import java.util.List;
 public class Topic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     @OneToMany(mappedBy = "topic") // post belongs to one topic
+    @JsonManagedReference
     List<Post> postList;
 
     @ManyToOne // many topics belong to one forum
