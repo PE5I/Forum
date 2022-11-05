@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,9 +20,6 @@ public class Topic {
     @OneToMany(mappedBy = "topic") // post belongs to one topic
     @JsonManagedReference
     List<Post> postList;
-
-    @ManyToOne // many topics belong to one forum
-    Forum forum;
 
     public String title;
     public String body;

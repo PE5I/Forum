@@ -3,6 +3,7 @@ package com.auoia.forum.controller;
 import com.auoia.forum.model.Topic;
 import com.auoia.forum.service.PostService;
 import com.auoia.forum.service.TopicService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ public class TopicController {
         return topicService.getAllTopic();
     }
 
-    @GetMapping(path="/{id}")
+    @GetMapping("/{id}")
     public Topic getTopicById(@PathVariable Long id) {
         return topicService.getTopicById(id);
     }
@@ -39,8 +40,8 @@ public class TopicController {
         topicService.saveTopic(newTopic);
     }
 
-//    @PostMapping(path="/{topicId}")
-//    public void createPost(@PathVariable Long topicId, @RequestBody Post newPost) {
-//        postService.savePost(topicId, newPost);
-//    }
+    @DeleteMapping("/{id}")
+    public void deleteTopic(@PathVariable Long id) {
+        topicService.deleteTopicById(id);
+    }
 }
