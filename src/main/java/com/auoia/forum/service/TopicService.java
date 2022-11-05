@@ -21,7 +21,7 @@ public class TopicService {
     }
 
     public Topic getTopicById(Long id) {
-        Optional<Topic> topic = topicRepository.getTopicById(id);
+        Optional<Topic> topic = topicRepository.findTopicById(id);
 
         if (topic.isEmpty()) {
             throw new IllegalStateException("no topic with id " + id + " exists");

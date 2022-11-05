@@ -1,13 +1,14 @@
 package com.auoia.forum.repository;
 
 import com.auoia.forum.model.Post;
-import com.auoia.forum.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Topic> getAllPostsByTopicId(Long id);
+    List<Post> findAllPostsByTopicId(Long id);
+    Optional<Post> findPostById(Long id);
 }

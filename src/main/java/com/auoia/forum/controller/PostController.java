@@ -3,7 +3,7 @@ package com.auoia.forum.controller;
 
 import com.auoia.forum.model.Post;
 import com.auoia.forum.service.PostService;
-import com.auoia.forum.service.TopicService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,20 +18,23 @@ import java.util.List;
 public class PostController {
 
     PostService postService;
-    TopicService topicService;
 
-    public PostController(PostService postService, TopicService topicService) {
+    public PostController(PostService postService) {
         this.postService = postService;
-        this.topicService = topicService;
     }
 
     @GetMapping
-    public List<Post> getAllComments(@PathVariable Long topicId) {
-        return topicService.getTopicById(topicId).getPostList();
+    public List<Post> getAllPosts(@PathVariable Long topicId) {
+        return postService.getAllPostsByTopicId(topicId);
     }
 
-    @PostMapping(path="/create")
+    @PostMapping("/create")
     public void createPost(@PathVariable Long topicId, @RequestBody Post newPost) {
         postService.savePost(topicId, newPost);
+    }
+
+    @DeleteMapping(path = "/{postId}")
+    public void deletePostById(@PathVariable Long postId) {
+        postService.deletePostById(postId);
     }
 }
