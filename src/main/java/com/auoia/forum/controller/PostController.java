@@ -28,7 +28,7 @@ public class PostController {
         return postService.getAllPostsByTopicId(topicId);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public void createPost(@PathVariable Long topicId, @RequestBody Post newPost) {
         postService.savePost(topicId, newPost);
     }
